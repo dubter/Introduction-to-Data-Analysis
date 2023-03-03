@@ -21,6 +21,7 @@ class YouTube:
         return self.df
 
     def task3(self) -> Figure:
+        sns.set_style("darkgrid")
         fig, ax = plt.subplots(figsize=(15, 7))
         sns.boxplot(x=self.df['trending_date'].dt.day, y="views", data=self.df, ax=ax)
         ax.grid(True)
@@ -28,12 +29,13 @@ class YouTube:
         ax.tick_params(axis='y', labelsize=20)
 
         ax.set_title("Количество просмотров видео по дням ноября 2017 года", fontsize=20)
-        ax.set_ylabel('Миллионы просмотров', fontsize=20)
+        ax.set_ylabel('Просмотры', fontsize=20)
         ax.set_xlabel('Дни', fontsize=20)
         plt.savefig('amount_of_views_on_every_day_incorrect')
         return fig
 
     def task4(self) -> Figure:
+        sns.set_style("darkgrid")
         fig, ax = plt.subplots(figsize=(15, 7))
         sns.boxplot(x=self.df['trending_date'].dt.day, y="views", data=self.df, ax=ax)
         ax.grid(True)
@@ -48,6 +50,7 @@ class YouTube:
         return fig
 
     def task5(self) -> Figure:
+        sns.set_style("darkgrid")
         fig = sns.jointplot(x="views", y="likes", data=self.df, height=15, alpha=0.3)
         fig.fig.suptitle("Диаграмма рассеяния: просмотры vs лайки", fontsize=30)
         ax = fig.ax_joint
@@ -63,6 +66,7 @@ class YouTube:
         return fig.fig
 
     def task6(self) -> Figure:
+        sns.set_style("darkgrid")
         self.df = self.df[(self.df['views'] < 200000) & (self.df['likes'] < 10000)]
 
         fig = sns.jointplot(x="views", y="likes", data=self.df, height=15, alpha=0.3)
